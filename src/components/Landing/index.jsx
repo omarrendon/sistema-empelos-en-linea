@@ -47,7 +47,7 @@ function index(props) {
                   size="large"
                   className={classes.botonRegistro}
                   component={Link}
-                  to="/login-candidato"
+                  to="/regi5stro-candidato"
                 >
                   Registrate
                 </Button>

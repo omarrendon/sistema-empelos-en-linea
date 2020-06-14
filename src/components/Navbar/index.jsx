@@ -20,10 +20,10 @@ function index() {
           <Link to={"/login"} className={classes.link}>
             Iniciar Sesión
           </Link>
-          <Link to={"/login-candidato"} className={classes.link}>
+          <Link to={"/registro-candidato"} className={classes.link}>
             Registrarme como candidado
           </Link>
-          <Link to={"/login-empresario"} className={classes.link}>
+          <Link to={"/registro-empresario"} className={classes.link}>
             Registrarme como empresario
           </Link>
           <Link to={"/11"} className={classes.close}>Cerrar Sesión</Link>
@@ -31,8 +31,8 @@ function index() {
       </AppBar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login-candidato" component={Candidato} />
-        <Route path="/login-empresario" component={Empresario} />
+        <Route path="/registro-candidato" component={Candidato} />
+        <Route path="/registro-empresario" component={Empresario} />
         <Route path="/login" component={Login} />
       </Switch>
     </Router>

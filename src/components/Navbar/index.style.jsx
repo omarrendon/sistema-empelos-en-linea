@@ -8,7 +8,7 @@ export default makeStyles(theme => ({
     padding: theme.spacing(4, 4)
   },
   close: {
-    padding: theme.spacing(0.5, 150),
+    padding: theme.spacing(0, 140),
     height: "100%",
     position: "absolute",
     pointerEvents: "none",
@@ -19,5 +19,6 @@ export default makeStyles(theme => ({
     fontSize: "1.4em",
     textDecoration: "none",
     // fontWeight: "20px"
-  }
+  },
+  
 }));

@@ -12,8 +12,8 @@ function index() {
 
   return (
     <Router>
-      <AppBar position="static" color={"secondary"}>
-        <Tabs>
+      <AppBar position="static" color={"secondary"} >
+        <Tabs >
           <Link to={"/"} className={classes.link}>
             Inicio
           </Link>
@@ -26,7 +26,7 @@ function index() {
           <Link to={"/login-empresario"} className={classes.link}>
             Registrarme como empresario
           </Link>
-          <Link className={classes.close}>Cerrar Sesión</Link>
+          <Link to={"/11"} className={classes.close}>Cerrar Sesión</Link>
         </Tabs>
       </AppBar>
       <Switch>

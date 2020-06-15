@@ -9,7 +9,7 @@ export default makeStyles(theme => ({
     // marginTop: "0px",
     height: "400px",
     backgroundImage: "linear-gradient(to top, #9cecfb, #65c7f7, #0052d4)",
-    paddingTop: "40px"
+    paddingTop: "90px"
   },
   svg: {
     position: "absolute",

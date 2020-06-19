@@ -1,11 +1,19 @@
-import React from 'react';
-import Navbar from '../src/components/Navbar/index';
+import React, {useState} from "react";
+import Principal from '../src/components/Landing/Principal';
+import Candidato from "../src/components/Candidato/Candidato";
+
 
 function App() {
+  // const [principal, setPrincipal] = useState(true);
+
+  
+
   return (
-    <div>
-      <Navbar />
-    </div>
+    <>
+      
+      {/* <Principal/> */}
+      <Candidato />
+    </>
   );
 }
 

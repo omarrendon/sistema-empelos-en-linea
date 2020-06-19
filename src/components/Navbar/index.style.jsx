@@ -15,7 +15,7 @@ export default makeStyles(theme => ({
     padding: theme.spacing(2, 4)
   },
   close: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 10),
     flexGrow: 1,
     color: "#ff3f34",
     fontSize: "1.4em",

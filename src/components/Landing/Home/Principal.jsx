@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../Navbar/index";
 import RegistroCandidato from "../Candidato/index";
 import RegistroEmpresario from "../Empresario/index";
-import Home from "../Landing/index";
+import Home from "../Home/index";
 import Login from "../Sesion/index";
 
 function Principal() {

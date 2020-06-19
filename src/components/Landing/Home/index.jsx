@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Grid, Typography,Hidden, Button, Divider, Paper } from "@material-ui/core";
 import styles from "./index.styles";
-import Logo from "../../Images/job2.jpg";
+// import Logo from "../../Images/job2.jpg";
+import Logo from "../../../Images/job2.jpg";
+
 import WorkIcon from "@material-ui/icons/Work";
 import AssistantIcon from "@material-ui/icons/Assistant";
 import PersonPinIcon from "@material-ui/icons/PersonPin";

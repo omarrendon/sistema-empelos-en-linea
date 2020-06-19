@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import Principal from '../src/components/Landing/Principal';
-import Candidato from "../src/components/Candidato/Candidato";
+import React from "react";
+import Principal from '../src/components/Landing/Home/Principal';
+// import Candidato from "../src/components/Candidato/Candidato";
 
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
   return (
     <>
       
-      {/* <Principal/> */}
-      <Candidato />
+      <Principal/>
+      {/* <Candidato /> */}
     </>
   );
 }

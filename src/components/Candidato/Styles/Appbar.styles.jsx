@@ -11,7 +11,9 @@ export default makeStyles(theme => ({
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
-    }
+    },
+    textDecoration: "none",
+    color: "#ffff"
   },
   search: {
     position: "relative",
@@ -58,7 +60,7 @@ export default makeStyles(theme => ({
   },
   sectionMobile: {
     display: "flex",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "none"
     }
   }

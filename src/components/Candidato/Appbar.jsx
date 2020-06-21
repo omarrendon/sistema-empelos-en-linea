@@ -1,15 +1,24 @@
 import React from "react";
-import {AppBar, Toolbar, IconButton,  Typography, InputBase, Badge,MenuItem,Menu} from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+// import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Styles from './Styles/Appbar.styles';
+import Styles from "./Styles/Appbar.styles";
 
-import {Link} from 'react-router-dom';
-import Mapa from './Mapa';
+import { Link } from "react-router-dom";
+// import Mapa from './Mapa';
 
 function Appbar() {
   const classes = Styles();
@@ -37,7 +46,7 @@ function Appbar() {
   };
 
   const menuId = "primary-search-account-menu";
-  
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -48,13 +57,15 @@ function Appbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem component={Link} to="/123" >MAPA</MenuItem>
+      <MenuItem component={Link} to="/mapa">
+        MAPA
+      </MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
-  
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -65,15 +76,15 @@ function Appbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem component={Link} to="/mapa">
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge  color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Mapa</p>
       </MenuItem>
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
@@ -91,7 +102,7 @@ function Appbar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem>
+      </MenuItem> */}
     </Menu>
   );
 
@@ -99,19 +110,7 @@ function Appbar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          {/* <div className={classes.grow} /> */}
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-
-            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -134,16 +133,14 @@ function Appbar() {
               <MoreIcon />
             </IconButton>
           </div>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
 
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/"
+          >
             Candidato
           </Typography>
 
@@ -152,7 +149,7 @@ function Appbar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Buscar Empleo ..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -161,40 +158,39 @@ function Appbar() {
             />
           </div>
 
-          {/* <div className={classes.grow} />
+          <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+            <Typography
+              className={classes.title}
+              variant="h6"
+              noWrap
+              component={Link}
+              to="/"
             >
-              <AccountCircle />
-            </IconButton>
+              Cerrar Sesión
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                // onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Typography>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              // onClick={handleMobileMenuOpen}
               color="inherit"
             >
               <MoreIcon />
             </IconButton>
-          </div> */}
+          </div>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

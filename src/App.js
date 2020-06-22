@@ -1,7 +1,7 @@
 import React from "react";
 // import Principal from '../src/components/Landing/Home/Principal';
-import Candidato from "../src/components/Candidato/Candidato";
-
+// import Candidato from "../src/components/Candidato/Candidato";
+import Empresario from '../src/components/Empresario/Empresario';
 
 function App() {
   // const [principal, setPrincipal] = useState(true);
@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-      
+      <Empresario/>
       {/* <Principal/> */}
-      <Candidato />
+      {/* <Candidato /> */}
     </>
   );
 }

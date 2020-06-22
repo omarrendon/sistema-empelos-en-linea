@@ -63,7 +63,6 @@ function Appbar() {
       <MenuItem component={Link} to="/empleos">
         Mis Empleos
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 

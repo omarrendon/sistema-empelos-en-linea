@@ -60,7 +60,7 @@ export default makeStyles(theme => ({
   },
   sectionMobile: {
     display: "flex",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       display: "none"
     }
   }

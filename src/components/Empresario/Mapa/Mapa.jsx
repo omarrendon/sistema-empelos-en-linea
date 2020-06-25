@@ -5,6 +5,7 @@ import { Grid, Typography, Paper, TextField, Button } from "@material-ui/core";
 import style from "./Mapa.style";
 import "./Mapa.css";
 
+
 const MyMarker = props => {
   const initMarker = ref => {
     if (ref) {
@@ -16,14 +17,50 @@ const MyMarker = props => {
 };
 
 function Mapa() {
-  const [currentPos, setCurrentPos] = useState(null);
+  
   const prov = new OpenStreetMapProvider();
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const classes = style();
+  const [currentPos, setCurrentPos] = useState(null);
+  const [formulario, setFormulario] = useState({
+    nombre: "",
+    descripcion: "",
+    salrio: "",
+    contrato: ""
+  });
 
   const handleClick = e => {
     setCurrentPos(e.latlng);
     console.log(currentPos);
+  };
+
+  const handleChange = e => {
+    setFormulario({
+      ...formulario,
+      [e.target.name] : e.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    const {nombre, descripcion, salario, contrato} = formulario;
+    const {lat, lng} = currentPos;
+    event.preventDefault();
+    console.log(
+      "DATOS DEL FORMULARIO : " +
+        "NOMBRE " +
+        nombre +
+        " DESCRIPCION" +
+        descripcion +
+        " SALALRIO" +
+        salario +
+        " CONTRATOS " +
+        contrato +
+        " LATITUD" + lat +
+        " LONGITUD" + lng 
+    );
+
+    
+
   };
 
   return (
@@ -49,11 +86,12 @@ function Mapa() {
             </Grid>
             <Grid container xs={12} sm={12} md={12}>
               <Grid item xs={12} sm={12} md={12}>
-                <form noValidate autoComplete="off">
+                <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                   <Grid item xs={12} sm={12} md={12} className={classes.root}>
                     <TextField
                       name="nombre"
                       required
+                      onChange={handleChange}
                       id="nombre"
                       label="Nombre de la vacante"
                       autoFocus
@@ -62,6 +100,7 @@ function Mapa() {
                     <TextField
                       name="descripcion"
                       required
+                      onChange={handleChange}
                       id="descripcion"
                       label="Descripción de la vacante"
                       className={classes.field}
@@ -69,6 +108,7 @@ function Mapa() {
                     <TextField
                       name="salario"
                       id="salario"
+                      onChange={handleChange}
                       label="Salario de la vacante"
                       type="number"
                       className={classes.field}
@@ -76,6 +116,7 @@ function Mapa() {
                     <TextField
                       name="contrato"
                       required
+                      onChange={handleChange}
                       id="contrato"
                       label="Tipo de Contrato"
                       className={classes.field}
@@ -127,6 +168,7 @@ function Mapa() {
                     variant="contained"
                     color="secondary"
                     className={classes.buton}
+                    type="submit"
                   >
                     Guardar
                   </Button>

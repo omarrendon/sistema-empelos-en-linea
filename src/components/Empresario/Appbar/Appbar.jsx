@@ -36,9 +36,9 @@ function Appbar() {
             <Link to={"/empleos"} className={classes.link}>
               Mis Empleos
             </Link>
-            <Link to={"/propuestas"} className={classes.link}>
+            {/* <Link to={"/propuestas"} className={classes.link}>
               Mis propuestas
-            </Link>
+            </Link> */}
             <Link to={"/"} className={classes.close}>
               Cerrar Sesión
             </Link>

@@ -7,12 +7,12 @@ import {
   Typography,
   Snackbar
 } from "@material-ui/core";
-import styles from "./Empleos.style";
+import styles from "./Propuestra.style";
 import axios from "axios";
 
 function Empleos() {
   const classes = styles();
-  const [data, setData] = useState({ publicaciones: [] });
+  const [data, setData] = useState({ propuestas: [] });
 
   const [state, setState] = useState({
     open: false,
@@ -27,7 +27,7 @@ function Empleos() {
   };
 
   const fetcher = async () => {
-    const response = await axios.get("http://localhost:4000/api/publicacion/");
+    const response = await axios.get("http://localhost:4000/api/cxp/");
     setData(response.data);
     console.log(response.data);
   };
@@ -35,17 +35,17 @@ function Empleos() {
   useEffect(() => {
     fetcher();
   }, []);
-  
-  const handleDelete = async (id_publicacion, newState) => {
-    console.log(id_publicacion);
 
-    await axios.delete(
-      "http://localhost:4000/api/publicacion/" + id_publicacion
-    );
-    console.log("Publicacion elimnada " + id_publicacion);
-    setState({ open: true, ...newState });
-    fetcher();
-  };
+  // const handleDelete = async ( newState) => {
+  //   console.log(id_publicacion);
+
+  //   await axios.delete(
+  //     "http://localhost:4000/api/publicacion/" + id_publicacion
+  //   );
+  //   console.log("Publicacion elimnada " + id_publicacion);
+  //   setState({ open: true, ...newState });
+  //   fetcher();
+  // };
 
   return (
     <Grid container item xs={12} sm={12} md={12} className={classes.root}>
@@ -57,8 +57,13 @@ function Empleos() {
               color="secondary"
               className={classes.titulo}
             >
-              Mis Empleos
+              Mis Propuestas
             </Typography>
+            {/* <ul>
+              {data.propuestas.map(p => (
+                <li>{p.cxp.cxpPublicacion.autor}</li>
+              ))}
+            </ul> */}
             <Grid container>
               <Grid
                 item
@@ -67,43 +72,50 @@ function Empleos() {
                 md={12}
                 className={classes.empleosCard}
               >
-                {data.publicaciones.map(publicacion => (
+                {/* {data.propuestas.map( (propuesta) => (
                   <>
-                    <Card variant="outlined">
+                    <Card
+                      variant="outlined"
+                      // key={propuesta.id_candidatoxpublicacion}
+                    >
                       <CardContent>
                         <Typography variant="h4" color="secondary">
-                          {publicacion.titulo}
+                          {propuesta.cxpPublicacion.titulo}
                         </Typography>
-                        <h3>{publicacion.descripcion}</h3>
+                        <h3>{propuesta.cxpPublicacion.descripcion}</h3>
                         <p>
                           <Typography variant="h7" color="secondary">
                             Salario :
                           </Typography>{" "}
-                          ${publicacion.salario}
+                          ${propuesta.cxpPublicacion.salario}
                         </p>
                         <p>
                           <Typography variant="h7" color="secondary">
                             Contrato :{" "}
                           </Typography>
-                          {publicacion.contrato}
+                          {propuesta.cxpPublicacion.contrato}
                         </p>
                         <p>
                           <Typography variant="h7" color="secondary">
-                            Fecha de Publicacion :{" "}
+                            Candidato :{" "}
                           </Typography>
-                          {publicacion.fecha_publicacion}
+                          {propuesta.cxpCandidato.nombre}{" "}
+                          {propuesta.cxpCandidato.apellido_paterno}
+                          {propuesta.cxpCandidato.apellido_materno}
+                          {propuesta.cxpCandidato.email}
+                          {propuesta.cxpCandidato.telefono}
                         </p>
                       </CardContent>
                       <Button
                         variant="contained"
                         color="primary"
                         className={classes.btnEliminar}
-                        onClick={() =>
-                          handleDelete(publicacion.id_publicacion, {
-                            vertical: "bottom",
-                            horizontal: "center"
-                          })
-                        }
+                        // onClick={() =>
+                        //   handleDelete(propuesta.id_candidatoxpublicacion, {
+                        //     vertical: "bottom",
+                        //     horizontal: "center"
+                        //   })
+                        // }
                       >
                         Eliminar
                       </Button>
@@ -118,7 +130,7 @@ function Empleos() {
                       key={vertical + horizontal}
                     />
                   </>
-                ))}
+                ))} */}
               </Grid>
             </Grid>
           </CardContent>

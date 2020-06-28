@@ -15,6 +15,5 @@ export default makeStyles({
   btnEliminar: {
     marginLeft: "40%",
     marginBottom: "20px"
-  },
-  
+  }
 });

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, TileLayer, Popup, Marker, withLeaflet } from "react-leaflet";
 import { SearchControl, OpenStreetMapProvider } from "react-leaflet-geosearch";
-import { Grid, Typography, Paper, TextField, Button } from "@material-ui/core";
+import { Grid, Typography, Paper, TextField, Button, Snackbar } from "@material-ui/core";
+import axios from 'axios';
 import style from "./Mapa.style";
 import "./Mapa.css";
-
 
 const MyMarker = props => {
   const initMarker = ref => {
@@ -12,12 +12,10 @@ const MyMarker = props => {
       ref.leafletElement.openPopup();
     }
   };
-
   return <Marker ref={initMarker} {...props} />;
 };
 
 function Mapa() {
-  
   const prov = new OpenStreetMapProvider();
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const classes = style();
@@ -28,6 +26,29 @@ function Mapa() {
     salrio: "",
     contrato: ""
   });
+  const [data, setData] = useState({ empresarios: [] });
+
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center"
+  });
+
+  const { vertical, horizontal, open } = state;
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
+
+  useEffect( () => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:4000/api/empresario/", );
+      setData(response.data);
+      console.log(response.data);
+    }
+
+    fetchData();
+  }, []);
 
   const handleClick = e => {
     setCurrentPos(e.latlng);
@@ -37,30 +58,37 @@ function Mapa() {
   const handleChange = e => {
     setFormulario({
       ...formulario,
-      [e.target.name] : e.target.value
+      [e.target.name]: e.target.value
     });
+  };
+  
+  const handleClickSnack = newState => () => {
+    setState({ open: true, ...newState });
   };
 
   const handleSubmit = event => {
-    const {nombre, descripcion, salario, contrato} = formulario;
-    const {lat, lng} = currentPos;
+    const { nombre, descripcion, salario, contrato } = formulario;
+    const { lat, lng } = currentPos;
+    const fecha_publicacion = Date.now();
+
+    const data = {
+      autor : "Omar Rendón",
+      descripcion,
+      titulo : nombre,
+      fecha_publicacion,
+      salario,
+      contrato,
+      latitud: lat,
+      longitud: lng,
+      fk_empresario:1
+    }
     event.preventDefault();
-    console.log(
-      "DATOS DEL FORMULARIO : " +
-        "NOMBRE " +
-        nombre +
-        " DESCRIPCION" +
-        descripcion +
-        " SALALRIO" +
-        salario +
-        " CONTRATOS " +
-        contrato +
-        " LATITUD" + lat +
-        " LONGITUD" + lng 
-    );
-
-    
-
+    if (nombre === "" || descripcion === "" || contrato === "") {
+      alert("Llenar campos pendientes");
+    } else {
+      axios.post("http://localhost:4000/api/publicacion/", data);
+      event.target.reset();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    }
   };
 
   return (
@@ -90,7 +118,6 @@ function Mapa() {
                   <Grid item xs={12} sm={12} md={12} className={classes.root}>
                     <TextField
                       name="nombre"
-                      required
                       onChange={handleChange}
                       id="nombre"
                       label="Nombre de la vacante"
@@ -169,10 +196,22 @@ function Mapa() {
                     color="secondary"
                     className={classes.buton}
                     type="submit"
+                    onClick={handleClickSnack({
+                      vertical: "bottom",
+                      horizontal: "center"
+                    })}
                   >
                     Guardar
                   </Button>
                 </form>
+                <Snackbar
+                  anchorOrigin={{ vertical, horizontal }}
+                  open={open}
+                  autoHideDuration={3000}
+                  onClose={handleClose}
+                  message="Publicación Creada"
+                  key={vertical + horizontal}
+                />
               </Grid>
             </Grid>
           </Paper>

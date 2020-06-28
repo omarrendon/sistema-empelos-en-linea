@@ -5,15 +5,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const theme = createMuiTheme ({
+const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: "#fd151b"
+    },
     secondary: {
-      main : '#0052d4'
+      main: "#0052d4"
     }
   }
 });
 
 ReactDOM.render(
+  // <StrictMode>
+  //   <ThemeProvider theme={theme}>
+  //     <App />
+  //   </ThemeProvider>
+  // </StrictMode>,
   <StrictMode>
     <ThemeProvider theme={theme}>
       <App />

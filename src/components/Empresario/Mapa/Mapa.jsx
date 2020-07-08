@@ -18,8 +18,8 @@ const MyMarker = props => {
 function Mapa() {
   const prov = new OpenStreetMapProvider();
   const GeoSearchControlElement = withLeaflet(SearchControl);
-  const classes = style();
   const [currentPos, setCurrentPos] = useState(null);
+  const classes = style();
   const [formulario, setFormulario] = useState({
     nombre: "",
     descripcion: "",

@@ -118,7 +118,7 @@ function Appbar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
         <Toolbar>
           <div className={classes.sectionDesktop}>
             <IconButton

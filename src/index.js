@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import './index.css';
@@ -22,11 +22,10 @@ ReactDOM.render(
   //     <App />
   //   </ThemeProvider>
   // </StrictMode>,
-  <StrictMode>
+  
     <ThemeProvider theme={theme}>
       <App />
-    </ThemeProvider>
-  </StrictMode>,
+    </ThemeProvider>,
   document.getElementById("root")
 );
 

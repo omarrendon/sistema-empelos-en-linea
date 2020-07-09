@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, TileLayer, Popup, Marker, withLeaflet } from "react-leaflet";
 import { SearchControl, OpenStreetMapProvider } from "react-leaflet-geosearch";
 
@@ -13,15 +13,20 @@ const MyMarker = props => {
   return <Marker ref={initMarker} {...props} />;
 };
 
-function Mapa() {
+function Mapa(props) {
   const prov = new OpenStreetMapProvider();
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const [currentPos, setCurrentPos] = useState(null);
+
+  useEffect(() => {
+    
+  }, []);
 
   const handleClick = e => {
     setCurrentPos(e.latlng);
     console.log(currentPos);
   };
+
   return (
     <div>
       <Map
@@ -55,13 +60,14 @@ function Mapa() {
         {currentPos && (
           <MyMarker position={currentPos}>
             <Popup position={currentPos}>
-              Ubcación Actual: <pre>{JSON.stringify(currentPos, null, 2)}</pre>
+              Ubcación Actual{" "}
+              {/* <pre>{JSON.stringify(currentPos, null, 2)}</pre> */}
             </Popup>
           </MyMarker>
         )}
       </Map>
     </div>
-  )
+  );
 }
 
 export default Mapa;

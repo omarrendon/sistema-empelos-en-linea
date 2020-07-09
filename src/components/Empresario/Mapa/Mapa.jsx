@@ -15,7 +15,7 @@ const MyMarker = props => {
   return <Marker ref={initMarker} {...props} />;
 };
 
-function Mapa() {
+function Mapa(props) {
   const prov = new OpenStreetMapProvider();
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const [currentPos, setCurrentPos] = useState(null);
@@ -50,10 +50,10 @@ function Mapa() {
     fetchData();
   }, []);
 
-  const handleClick = e => {
-    setCurrentPos(e.latlng);
-    console.log(currentPos);
-  };
+  // const handleClick = e => {
+  //   setCurrentPos(e.latlng);
+  //   console.log(currentPos);
+  // };
 
   const handleChange = e => {
     setFormulario({
@@ -164,7 +164,7 @@ function Mapa() {
                       dragging={true}
                       animate={true}
                       easeLinearity={0.35}
-                      onClick={handleClick}
+                      onClick={props.handleClick}
                       className="map"
                     >
                       <GeoSearchControlElement

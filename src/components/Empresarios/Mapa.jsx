@@ -18,13 +18,14 @@ function Mapa(props) {
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const [currentPos, setCurrentPos] = useState(null);
 
+  
   useEffect(() => {
-    
   }, []);
-
+  
   const handleClick = e => {
+    props.currentPosition(currentPos);
     setCurrentPos(e.latlng);
-    console.log(currentPos);
+    console.log(currentPos);  
   };
 
   return (
@@ -40,7 +41,8 @@ function Mapa(props) {
         dragging={true}
         animate={true}
         easeLinearity={0.35}
-        onClick={handleClick}
+        onclick={handleClick}
+        // onClick={props.handleClicLocation}
         className="map"
       >
         <GeoSearchControlElement

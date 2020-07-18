@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "../../Hooks/useForm";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Mapa from "./Mapa";
@@ -11,6 +11,21 @@ function RegistroEmpleo() {
     contrato: ""
   });
   const { titulo, descripcion, salario, contrato } = formValues;
+
+  const [currentPosition, setCurrentPositon] = useState(null);
+
+  useEffect(() => {
+    // handleClickLocation();
+    // console.log("cambio position");
+  }, []);
+  
+  console.log(currentPosition);
+
+
+  const handleClickLocation = (e) => {
+    setCurrentPositon(e);
+    console.log(currentPosition);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -76,7 +91,10 @@ function RegistroEmpleo() {
             </Col>
             <Col md={7} sm={12} xs={12}>
               <Form.Label>Seleccionar Ubicación en el mapa</Form.Label>
-              <Mapa />
+              <Mapa
+                // handleClickLocation={handleClickLocation}
+                currentPosition={handleClickLocation}
+              />
             </Col>
           </Form.Row>
         </Form>

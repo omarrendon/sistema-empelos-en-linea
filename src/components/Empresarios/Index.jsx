@@ -1,6 +1,4 @@
 import React from "react";
-// import { useForm } from "../../Hooks/useForm";
-import Mapa from "./Mapa";
 import Navigation from "./Navigation";
 import RegistroEmpleo from "./RegistroEmpleo";
 

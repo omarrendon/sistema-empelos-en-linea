@@ -23,8 +23,8 @@ function Mapa(props) {
   }, []);
   
   const handleClick = e => {
-    props.currentPosition(currentPos);
     setCurrentPos(e.latlng);
+    props.currentPosition(currentPos);
     console.log(currentPos);  
   };
 
@@ -42,7 +42,6 @@ function Mapa(props) {
         animate={true}
         easeLinearity={0.35}
         onclick={handleClick}
-        // onClick={props.handleClicLocation}
         className="map"
       >
         <GeoSearchControlElement

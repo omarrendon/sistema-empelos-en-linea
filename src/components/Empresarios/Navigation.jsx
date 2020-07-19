@@ -13,9 +13,15 @@ function Navigation() {
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#features">Mi Perfil</Nav.Link>
-          <Nav.Link href="#pricing">Mis Publicaciones</Nav.Link>
-          <Nav.Link href="#pricing">Mis Propuestas</Nav.Link>
+          <Nav.Link>
+            <Link to={"/perfil"}>Mi Perfil</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/publicaciones"}>Mis Publicaciones</Link>{" "}
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/propuestas"}>Mis Propuestas</Link>
+          </Nav.Link>
         </Nav>
 
         <Nav>

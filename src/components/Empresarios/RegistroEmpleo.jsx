@@ -15,91 +15,93 @@ function RegistroEmpleo() {
   const [currentPosition, setCurrentPositon] = useState(null);
 
   useEffect(() => {
-    // handleClickLocation();
-    // console.log("cambio position");
-  }, []);
+    console.log("cambio position");
+  }, [currentPosition]);
   
-  console.log(currentPosition);
-
-
   const handleClickLocation = (e) => {
     setCurrentPositon(e);
-    console.log(currentPosition);
   };
 
   const handleSubmit = event => {
-    event.preventDefault();
-    console.log(formValues);
+    event.preventDefault();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    if(currentPosition) {   
+      console.log("POSICION ACTUAL: " + currentPosition);
+      console.log(formValues);
+    }else {
+      alert("Llenar los campos correspondientes")
+    }
+
   };
 
   return (
-    <Row>
-      <Col md={12} sm={12} xs={12}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Row>
-            <Col md={5} sm={12} xs={12}>
-              <Form.Group>
-                <Form.Label>Título de la Vacante</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Nombre de la vacante"
-                  name="titulo"
-                  value={titulo}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
+    <div className="container p-4">
+      <p className="h2">Publicar nueva oferta de tabajo</p>
+      <hr />
+      <Row>
+        <Col md={12} sm={12} xs={12}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Row>
+              <Col md={5} sm={12} xs={12}>
+                <Form.Group>
+                  <Form.Label>Título de la Vacante</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nombre de la vacante"
+                    name="titulo"
+                    value={titulo}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Descripción de la Vacante</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Descripción"
-                  name="descripcion"
-                  value={descripcion}
-                  onChange={handleInputChange}
-                />
-                <Form.Text className="text-muted">
-                  Descripción de la vacante que estas publicando.
-                </Form.Text>
-              </Form.Group>
+                <Form.Group>
+                  <Form.Label>Descripción de la Vacante</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Descripción"
+                    name="descripcion"
+                    value={descripcion}
+                    onChange={handleInputChange}
+                  />
+                  <Form.Text className="text-muted">
+                    Descripción de la vacante que estas publicando.
+                  </Form.Text>
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Salario de la Vacante</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Salio de vacante en MXN"
-                  name="salario"
-                  value={salario}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Label>Salario de la Vacante</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="Salio de vacante en MXN"
+                    name="salario"
+                    value={salario}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Tipo de Contrato</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Tiempo de contrato"
-                  name="contrato"
-                  value={contrato}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-              <br />
-              <Button variant="primary" type="submit" size="lg" block>
-                Guardar
-              </Button>
-            </Col>
-            <Col md={7} sm={12} xs={12}>
-              <Form.Label>Seleccionar Ubicación en el mapa</Form.Label>
-              <Mapa
-                // handleClickLocation={handleClickLocation}
-                currentPosition={handleClickLocation}
-              />
-            </Col>
-          </Form.Row>
-        </Form>
-      </Col>
-    </Row>
+                <Form.Group>
+                  <Form.Label>Tipo de Contrato</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Tiempo de contrato"
+                    name="contrato"
+                    value={contrato}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+                <br />
+                <Button variant="primary" type="submit" size="lg" block>
+                  Guardar
+                </Button>
+              </Col>
+              <Col md={7} sm={12} xs={12}>
+                <Form.Label>Buscar la ubicación en el mapa</Form.Label>
+                <Mapa currentPosition={handleClickLocation} />
+              </Col>
+            </Form.Row>
+          </Form>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

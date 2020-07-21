@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function PerfilImagen() {
+function PerfilImagen({URL, ALT}) {
+  const style = {
+    width: "400px",
+    borderRadius: "10px",
+  }
   return (
-    <div>
-      IMAGEN DE PERFIL
-    </div>
-  )
+    <>
+      <img style={style} src={URL} alt={ALT} />
+    </>
+  );
 }
 
 export default PerfilImagen;

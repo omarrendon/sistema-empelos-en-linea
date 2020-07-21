@@ -1,0 +1,32 @@
+.titulo-perfil {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.datos-perfil { 
+  font-size: 1.5em;
+}
+
+.data-perfil {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.imagen-perfil {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-perfil {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button {
+  width: 200px;
+}

@@ -3,14 +3,24 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import useFetch from "../../Hooks/useFetch";
 import PerfilImagen from "./PerfilImagen";
 import Logo from "../../Images/find.jpg";
+import ModalEditar from "./ModalEditar";
 import "./Styles/PerfilData.css";
 
 function PerfilData() {
   const { loading, data, error } = useFetch("http://localhost:4000/api/empresario/", {});
-
-  const { nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia
-          } = !!data && data[0];
+  const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[1];
+  const user = {id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia};
+  const [modalShow, setModalShow] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [users, setUsers] = useState(user);
+  
   console.table(data);
+  console.log(user);
+
+  const updateUser = (id_empresario, updateUser) => {
+    setModalShow(true);
+    setEditing(true);
+  };
 
   return (
     <>
@@ -43,9 +53,21 @@ function PerfilData() {
                 <PerfilImagen URL={Logo} ALT={"FotoPerfil"} />
               </Col>
               <Col md={12} sm={12} xs={12} className="button-perfil m-3">
-                <Button variant="success" size="lg" className="button">
-                  Editar
+                <Button
+                  variant="success"
+                  size="lg"s
+                  className="button"
+                  // onClick={(() => setModalShow(true))}]
+                  onClick={ () => updateUser(user)}
+                >
+                  Editar Información
                 </Button>
+                <ModalEditar
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  editing={editing}
+                  user={user}
+                />
               </Col>
             </Row>
           </Card>

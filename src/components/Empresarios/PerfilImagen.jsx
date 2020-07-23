@@ -1,13 +1,13 @@
 import React from 'react';
 
-function PerfilImagen({URL, ALT}) {
+function PerfilImagen({url, alt, width}) {
   const style = {
-    width: "400px",
+    width: `${width}px`,
     borderRadius: "10px",
   }
   return (
     <>
-      <img style={style} src={URL} alt={ALT} />
+      <img style={style} src={url} alt={alt} />
     </>
   );
 }

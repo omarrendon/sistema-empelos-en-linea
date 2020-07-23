@@ -30,7 +30,6 @@ function RegistroEmpleo() {
     }else {
       alert("Llenar los campos correspondientes")
     }
-
   };
 
   return (

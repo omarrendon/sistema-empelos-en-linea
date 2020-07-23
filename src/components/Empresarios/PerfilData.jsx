@@ -7,19 +7,15 @@ import ModalEditar from "./ModalEditar";
 import "./Styles/PerfilData.css";
 
 function PerfilData() {
-  const { loading, data, error } = useFetch("http://localhost:4000/api/empresario/", {});
-  const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[1];
+  const { data, error } = useFetch("http://localhost:4000/api/empresario/", {});
+  const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[0];
   const user = {id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia};
   const [modalShow, setModalShow] = useState(false);
-  const [editing, setEditing] = useState(false);
-  const [users, setUsers] = useState(user);
   
-  console.table(data);
-  console.log(user);
+  console.table(user);
 
-  const updateUser = (id_empresario, updateUser) => {
+  const updateUser = () => {
     setModalShow(true);
-    setEditing(true);
   };
 
   return (
@@ -50,14 +46,13 @@ function PerfilData() {
                 <p className="data-perfil ml-5 pl-5">{contrasenia}</p>
               </Col>
               <Col md={6} sm={12} xs={12} className="imagen-perfil">
-                <PerfilImagen URL={Logo} ALT={"FotoPerfil"} />
+                <PerfilImagen url={Logo} alt={"FotoPerfil"} width={450}/>
               </Col>
               <Col md={12} sm={12} xs={12} className="button-perfil m-3">
                 <Button
-                  variant="success"
+                  variant="primary"
                   size="lg"s
                   className="button"
-                  // onClick={(() => setModalShow(true))}]
                   onClick={ () => updateUser(user)}
                 >
                   Editar Información
@@ -65,7 +60,6 @@ function PerfilData() {
                 <ModalEditar
                   show={modalShow}
                   onHide={() => setModalShow(false)}
-                  editing={editing}
                   user={user}
                 />
               </Col>

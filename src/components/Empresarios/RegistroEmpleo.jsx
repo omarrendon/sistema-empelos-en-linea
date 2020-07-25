@@ -94,7 +94,10 @@ function RegistroEmpleo() {
               </Col>
               <Col md={7} sm={12} xs={12}>
                 <Form.Label>Buscar la ubicación en el mapa</Form.Label>
-                <Mapa currentPosition={handleClickLocation} />
+                <Mapa
+                  currentPosition={handleClickLocation}
+                  validateMap={false}
+                />
               </Col>
             </Form.Row>
           </Form>

@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer, Popup, Marker, withLeaflet } from "react-leaflet";
 import { SearchControl, OpenStreetMapProvider } from "react-leaflet-geosearch";
-
+import { Icon } from "leaflet";
 import "./Styles/Mapa.css";
+
+const icon = new Icon({
+  iconUrl: "/trabajo.svg",
+  iconSize: [30, 30]
+});
 
 const MyMarker = props => {
   const initMarker = ref => {
@@ -18,14 +23,22 @@ function Mapa(props) {
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const [currentPos, setCurrentPos] = useState(null);
 
-  
+  const [validateMap, setValidateMap] = useState(null);
+
   useEffect(() => {
+    // // props.mapaPosition.length > 1 ? setValidateMap(true) : setValidateMap(false);
+    // if(props.mapaPosition.length ) {
+    //     setValidateMapa(true)
+    //   }
+    setValidateMap(true);
   }, []);
-  
+
+  console.log(props);
+
   const handleClick = e => {
     setCurrentPos(e.latlng);
     props.currentPosition(currentPos);
-    console.log(currentPos);  
+    console.log(currentPos);
   };
 
   return (
@@ -58,14 +71,24 @@ function Mapa(props) {
         />
         <TileLayer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
 
-        {currentPos && (
-          <MyMarker position={currentPos}>
-            <Popup position={currentPos}>
-              Ubcación Actual{" "}
-              {/* <pre>{JSON.stringify(currentPos, null, 2)}</pre> */}
-            </Popup>
-          </MyMarker>
-        )}
+        {props.validateMap
+          ? props.mapaPosition && (
+              <MyMarker
+                icon={icon}
+                position={[props.mapaPosition[0], props.mapaPosition[1]]}
+              >
+                <Popup
+                  position={[props.mapaPosition[0], props.mapaPosition[1]]}
+                >
+                  Ubcación Actual del Empleo{" "}
+                </Popup>
+              </MyMarker>
+            )
+          : currentPos && (
+              <MyMarker position={currentPos}>
+                <Popup position={currentPos}> Ubcación Actual</Popup>
+              </MyMarker>
+            )}
       </Map>
     </div>
   );

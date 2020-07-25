@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
+import Mapa from './Mapa';
 import "./Styles/Publicaciones.css";
+
+
 
 function Publicaciones() {
   const [data, setData] = useState({ publicaciones: [] });
-
+  const [currentPosition, setCurrentPositon] = useState(null)
+  
   const fetchData = async () => {
     const response = await axios.get(
       "http://localhost:4000/api/publicacion/",
@@ -19,6 +23,10 @@ function Publicaciones() {
     fetchData();
   }, []);
 
+  const handleClickLocation = e => {
+    setCurrentPositon(e);
+  };
+  
   return (
     <>
       <Row>
@@ -37,17 +45,19 @@ function Publicaciones() {
                   <p className="card-objetivo">{item.descripcion}</p>
                   <Card.Body className="card-descripcion">
                     <Row>
-                      <Col md={6} sm={6} xs={12}>
+                      <Col md={5} sm={6} xs={12}>
                         <label className="card-label">Salario</label>
-                        <Card.Text>{item.salario}</Card.Text>
+                        <Card.Text className="card-text">
+                          $ {item.salario}
+                        </Card.Text>
                         <label className="card-label">Tipo de contrato</label>
-                        <Card.Text>{item.contrato}</Card.Text>
-                      </Col>
-                      <Col md={6} sm={6} xs={12}>
+                        <Card.Text className="card-text">
+                          {item.contrato}
+                        </Card.Text>
                         <label className="card-label">
                           Autor de la publicación
                         </label>
-                        <Card.Text>
+                        <Card.Text className="card-text">
                           {item.empresario.nombre}{" "}
                           {item.empresario.apellido_paterno}{" "}
                           {item.empresario.apellido_materno}
@@ -55,13 +65,25 @@ function Publicaciones() {
                         <label className="card-label">
                           Fecha de la publicación
                         </label>
-                        <Card.Text>{item.fecha_publicacion}</Card.Text>
+                        <Card.Text className="card-text">
+                          {item.fecha_publicacion}
+                        </Card.Text>
+                      </Col>
+                      <Col md={7} sm={6} xs={12}>
+                        <label className="card-label">
+                          Ubicación actual del empleo
+                        </label>
+                        <Mapa
+                          validateMap={true}
+                          mapaPosition={[item.latitud, item.longitud]}
+                          currentPosition={handleClickLocation}
+                        />
                       </Col>
                       <Col md={12} sm={12} xs={12} className="card-botones">
-                        <Button variant="danger" className="boton mt-4 mr-3">
+                        <Button variant="danger" className="boton mt-4 mr-4">
                           Eliminar
                         </Button>
-                        <Button variant="success" className="boton mt-4 mr-3">
+                        <Button variant="success" className="boton mt-4 mr-4">
                           Editar
                         </Button>
                       </Col>

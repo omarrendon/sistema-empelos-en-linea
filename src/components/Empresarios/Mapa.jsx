@@ -23,18 +23,6 @@ function Mapa(props) {
   const GeoSearchControlElement = withLeaflet(SearchControl);
   const [currentPos, setCurrentPos] = useState(null);
 
-  const [validateMap, setValidateMap] = useState(null);
-
-  useEffect(() => {
-    // // props.mapaPosition.length > 1 ? setValidateMap(true) : setValidateMap(false);
-    // if(props.mapaPosition.length ) {
-    //     setValidateMapa(true)
-    //   }
-    setValidateMap(true);
-  }, []);
-
-  console.log(props);
-
   const handleClick = e => {
     setCurrentPos(e.latlng);
     props.currentPosition(currentPos);

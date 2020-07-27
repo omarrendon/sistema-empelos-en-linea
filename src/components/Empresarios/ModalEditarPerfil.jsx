@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import PerfilImagen from "./PerfilImagen";
 import Logo from "../../Images/find.jpg";
 
-function ModalEditar(props) {
+function ModalEditarPerfil(props) {
   const [user, setUser] = useState(props.user);
   
   useEffect(() => {
@@ -116,4 +116,4 @@ function ModalEditar(props) {
   );
 }
 
-export default ModalEditar;
+export default ModalEditarPerfil;

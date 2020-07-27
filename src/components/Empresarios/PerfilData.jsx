@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import useFetch from "../../Hooks/useFetch";
 import PerfilImagen from "./PerfilImagen";
 import Logo from "../../Images/find.jpg";
-import ModalEditar from "./ModalEditar";
+import ModalEditarPerfil from "./ModalEditarPerfil";
 import "./Styles/PerfilData.css";
 
 function PerfilData() {
-  const { data, error } = useFetch("http://localhost:4000/api/empresario/", {});
+  const { data } = useFetch("http://localhost:4000/api/empresario/", {});
   const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[0];
   const user = {id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia};
   const [modalShow, setModalShow] = useState(false);
@@ -46,18 +46,19 @@ function PerfilData() {
                 <p className="data-perfil ml-5 pl-5">{contrasenia}</p>
               </Col>
               <Col md={6} sm={12} xs={12} className="imagen-perfil">
-                <PerfilImagen url={Logo} alt={"FotoPerfil"} width={450}/>
+                <PerfilImagen url={Logo} alt={"FotoPerfil"} width={450} />
               </Col>
               <Col md={12} sm={12} xs={12} className="button-perfil m-3">
                 <Button
                   variant="primary"
-                  size="lg"s
+                  size="lg"
+                  s
                   className="button"
-                  onClick={ () => updateUser(user)}
+                  onClick={() => updateUser(user)}
                 >
                   Editar Información
                 </Button>
-                <ModalEditar
+                <ModalEditarPerfil
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                   user={user}

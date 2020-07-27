@@ -1,39 +1,78 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
-import Mapa from './Mapa';
+import PublicacionesMap from "./PublicacionesMap";
+import ModalEditarPublicacion from "./ModalEditarPublicacion";
+import Pagination from "./Pagination";
 import "./Styles/Publicaciones.css";
-
-
 
 function Publicaciones() {
   const [data, setData] = useState({ publicaciones: [] });
-  const [currentPosition, setCurrentPositon] = useState(null)
-  
+  const [currentPosition, setCurrentPositon] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const fetchData = async () => {
+    setLoading(true);
     const response = await axios.get(
       "http://localhost:4000/api/publicacion/",
       {}
     );
     console.log(response.data);
     setData(response.data);
+    setLoading(false);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const handleEdit = item => {
+    console.log(item);
+    setModalShow(true);
+  };
 
   const handleClickLocation = e => {
     setCurrentPositon(e);
   };
-  
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = data.publicaciones.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const nextPage = () => setCurrentPage(currentPage + 1);
+  const prevPage = () => setCurrentPage(currentPage - 1);
+  // const prevPage = () => this.setState({ paginaActual: paginaActual - 1 });
+
   return (
     <>
       <Row>
         <Col md={12} sm={12} xs={12} className="root">
           <p className="h2 mt-5">Mis Publicaciones</p>
           <Card className="border border-primary mt-3 card-pricipal">
-            {data.publicaciones.map(item => (
+            <PublicacionesMap
+              post={currentPosts}
+              loading={loading}
+              handleClickLocation={handleClickLocation}
+              handleEdit={handleEdit}
+            />
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={data.publicaciones.length}
+              paginate={paginate}
+              nextPage={nextPage}
+              prevPage={prevPage}
+            />
+          </Card>
+          {/* <Card className="border border-primary mt-3 card-pricipal">
+            {data.map(item => (
               <Card
                 className="border border-light m-2 card-element"
                 key={item.id_publicacion}
@@ -83,7 +122,11 @@ function Publicaciones() {
                         <Button variant="danger" className="boton mt-4 mr-4">
                           Eliminar
                         </Button>
-                        <Button variant="success" className="boton mt-4 mr-4">
+                        <Button
+                          variant="success"
+                          className="boton mt-4 mr-4"
+                          onClick={() => handleEdit(item)}
+                        >
                           Editar
                         </Button>
                       </Col>
@@ -93,7 +136,12 @@ function Publicaciones() {
                 </Card.Body>
               </Card>
             ))}
-          </Card>
+          </Card> */}
+          <ModalEditarPublicacion
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            // user={item}
+          />
         </Col>
       </Row>
     </>

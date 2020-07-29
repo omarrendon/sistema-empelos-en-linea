@@ -17,7 +17,7 @@ function Publicaciones() {
     descripcion: "",
     fecha_publicacion: "",
     fk_empresario: "",
-    latidud: "",
+    latitud: "",
     longitud: "",
     salario: "",
     titulo: ""
@@ -53,7 +53,7 @@ function Publicaciones() {
       descripcion: item.descripcion,
       fecha_publicacion: item.fecha_publicacion,
       fk_empresario: item.fk_empresario,
-      latidud: item.latidud,
+      latitud: item.latitud,
       longitud: item.longitud,
       salario: item.salario,
       titulo: item.titulo
@@ -63,7 +63,6 @@ function Publicaciones() {
 
   const updateUser = (id_publicacion, updateUser) => {
     setData({publicaciones: data.publicaciones.map( user => (user.id_publicacion === id_publicacion ? updateUser : user))});
-    // setData({data.publicaciones})
   };
 
   const handleClickLocation = e => {

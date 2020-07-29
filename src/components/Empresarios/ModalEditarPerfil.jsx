@@ -36,9 +36,7 @@ function ModalEditarPerfil(props) {
       </Modal.Header>
       <Modal.Body>
         <Row>
-          <Form
-            onSubmit={handleSubmit}
-          >
+          <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Col md={6} sm={12} xs={12} className="pl-4 ">
                 <Form.Group>

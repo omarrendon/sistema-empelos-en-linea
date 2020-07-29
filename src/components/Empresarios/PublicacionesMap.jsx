@@ -35,7 +35,7 @@ function PublicacionesMap({ post, loading, handleClickLocation, handleEdit }) {
                   <Card.Text className="card-text">{item.contrato}</Card.Text>
                   <label className="card-label">Autor de la publicación</label>
                   {/* <Card.Text className="card-text">
-                    {item.empresario.nombre} {item.empresario.apellido_paterno}{" "}
+                    {item.empresario.nombre} | {item.empresario.apellido_paterno}{" "}
                     {item.empresario.apellido_materno}
                   </Card.Text> */}
                   <label className="card-label">Fecha de la publicación</label>

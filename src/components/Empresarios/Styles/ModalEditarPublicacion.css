@@ -1,0 +1,22 @@
+
+.formulario{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.inputForm{
+  width: 100%;
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: flex-end; */
+  /* margin: auto; */
+}

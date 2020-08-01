@@ -9,7 +9,6 @@ import "./Styles/Publicaciones.css";
 function Publicaciones() {
   const [data, setData] = useState({ publicaciones: []});
   const [modalShow, setModalShow] = useState(false);
-
   const initialFormState = {
     id_publicacion: null,
     autor: "",
@@ -81,7 +80,8 @@ function Publicaciones() {
       <Row>
         <Col md={12} sm={12} xs={12} className="root">
           <p className="h2 mt-5">Mis Publicaciones</p>
-          <Card className="border border-primary mt-3 card-pricipal">
+          <hr />
+          <Card className="border border-dark mt-3 card-pricipal">
             <PublicacionesMap
               post={currentPosts}
               loading={loading}

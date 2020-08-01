@@ -22,7 +22,7 @@ function PerfilData() {
     <>
       <Row>
         <Col md={12} sm={12} xs={12} className="perfil ">
-          <Card className="border border-primary">
+          <Card className="border border-dark">
             <p className="text-center titulo-perfil">Datos de usuario</p>
             <Row>
               <Col md={6} sm={12} xs={12}>

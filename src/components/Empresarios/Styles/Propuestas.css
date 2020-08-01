@@ -1,0 +1,53 @@
+.root{
+  display: flex;
+  flex-direction: column; 
+  flex-wrap:wrap;
+  align-items: center;
+}
+.card-pricipal{
+  width: 90%;
+  display: flex;
+  flex-direction: norow; 
+  flex-wrap: wrap; 
+  align-items: center;
+}
+.card-element{
+  width: 90%;
+  /* display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  align-items: initial; */
+}
+
+/* .card-body{
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  align-items: flex-end; 
+} */
+
+ .card-titulo{
+  color: #1d3557;
+  font-size: 1.7em;
+} 
+
+.card-objetivo{
+ color: #264653;
+ font-size: 1.5em;
+}
+.card-label{
+  font-size: 1.3em;
+  font-weight: 700;
+}
+.card-text{
+  font-size: 1.4em;
+}
+/* .card-botones{
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: nowrap; 
+  align-items: flex-end;
+}
+.boton{
+  width: 150px;
+}  */

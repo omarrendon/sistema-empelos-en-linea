@@ -1,8 +1,12 @@
-.contenedor{
-  /* background: #ffffff;
+
+
+.boton {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center; */
-  margin: 90px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botonSubmit {
+  width: 300px;
+   margin-top: 20px; 
 }

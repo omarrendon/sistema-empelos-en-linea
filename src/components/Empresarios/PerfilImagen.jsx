@@ -2,8 +2,9 @@ import React from 'react';
 
 function PerfilImagen({url, alt, width}) {
   const style = {
-    width: `${width}px`,
+    width: `100%`,
     borderRadius: "10px",
+    objectFit: "contain",
   }
   return (
     <>

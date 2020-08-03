@@ -14,7 +14,7 @@ function PropuestasMap({ post, loading }) {
     <ul>
       {post.map(propuesta => (
         <Card
-          className="border border-light card-element"
+          className="border border-light mt-2 card-element"
           key={propuesta.id_candidatoxpublicacion}
         >
           <Card.Title>

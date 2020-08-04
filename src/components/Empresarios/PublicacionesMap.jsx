@@ -3,8 +3,13 @@ import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
 import Mapa from "./Mapa";
 // import ModalEditarPublicacion from "./ModalEditarPublicacion";
 
-function PublicacionesMap({ post, loading, handleClickLocation, handleEdit }) {
-  
+function PublicacionesMap({
+  post,
+  loading,
+  handleClickLocation,
+  handleEdit,
+  handleDelete
+}) {
   if (loading) {
     return (
       <>
@@ -14,6 +19,7 @@ function PublicacionesMap({ post, loading, handleClickLocation, handleEdit }) {
       </>
     );
   }
+  
   return (
     <>
       {post.map(item => (
@@ -54,13 +60,19 @@ function PublicacionesMap({ post, loading, handleClickLocation, handleEdit }) {
                   />
                 </Col>
                 <Col md={12} sm={12} xs={12} className="card-botones">
-                  <Button variant="danger" className="boton mt-4 mr-4">
+                  <Button
+                    variant="danger"
+                    className="boton mt-4 mr-4"
+                    onClick={() => handleDelete(item.id_publicacion)}
+                  >
                     Eliminar
                   </Button>
                   <Button
                     variant="success"
                     className="boton mt-4 mr-4"
-                    onClick={() => {handleEdit(item)}}
+                    onClick={() => {
+                      handleEdit(item);
+                    }}
                     // onClick={() => handleEdit(item)}
                   >
                     Editar

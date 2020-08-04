@@ -7,6 +7,7 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import "./Styles/RegistroEmpleo.css";
 
+
 function RegistroEmpleo() {
   const [formValues, handleInputChange] = useForm({
     titulo: "",
@@ -51,11 +52,13 @@ function RegistroEmpleo() {
         axios.post("http://localhost:4000/api/publicacion/", data);
         console.log(data);
         setShowToastSuccesss(true);
-        toast.dark("Publicación creada exitosamente ✔");
+        toast.success("Publicación creada exitosamente ✔", {
+          className: "toast-success"
+        });
       }
     }
   };
-  console.log(Date.now());
+
   const successToast = () => {
     return (
       <ToastContainer

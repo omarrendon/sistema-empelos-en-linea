@@ -20,3 +20,10 @@
   /* align-items: flex-end; */
   /* margin: auto; */
 }
+.boton-guardar{
+  width: 250px;
+}
+.toast-success {
+	background: #0ead69;
+	padding-left: 20%;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import PublicacionesMap from "./PublicacionesMap";
 import ModalEditarPublicacion from "./ModalEditarPublicacion";
@@ -42,7 +42,8 @@ function Publicaciones() {
     setLoading(false);
   };
   console.log(data.publicaciones);
-
+  console.log(loading);
+  
   const handleEdit = item => {
     console.log(item);
     setModalShow(true);
@@ -59,6 +60,7 @@ function Publicaciones() {
       titulo: item.titulo
     });
   };
+
   const handleClickLocation = e => {
     setCurrentPositon(e);
   };
@@ -93,6 +95,7 @@ function Publicaciones() {
       />
     );
   };
+
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

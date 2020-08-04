@@ -13,16 +13,19 @@ function PerfilData() {
   const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[2];
   const user = {id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia};
   const [modalShow, setModalShow] = useState(false);
+  const [dataUser, setDataUser] = useState(user);
   
   console.table(user);
   
   useEffect( () => {
-    console.log(nombre);    
-    // axios.get("http://localhost:4000/api/empresario/3");
+    setDataUser(user);
+    console.log(nombre);
   }, [data]);
-
+  
+  console.log(dataUser);
   const updateUser = () => {
     setModalShow(true);
+
   };
 
   return (

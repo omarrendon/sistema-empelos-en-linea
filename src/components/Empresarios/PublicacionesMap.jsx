@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
-import Mapa from "./Mapa";
+import Mapa from "../Mapa";
 // import ModalEditarPublicacion from "./ModalEditarPublicacion";
 
 function PublicacionesMap({

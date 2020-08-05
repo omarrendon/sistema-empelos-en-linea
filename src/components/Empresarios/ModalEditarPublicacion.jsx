@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
-import Mapa from "./Mapa";
+import Mapa from "../Mapa";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "./Styles/ModalEditarPublicacion.css";

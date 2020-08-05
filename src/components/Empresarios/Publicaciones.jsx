@@ -3,7 +3,7 @@ import { Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import PublicacionesMap from "./PublicacionesMap";
 import ModalEditarPublicacion from "./ModalEditarPublicacion";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "./Styles/Publicaciones.css";
 

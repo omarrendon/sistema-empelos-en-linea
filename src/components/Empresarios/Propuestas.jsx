@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import PropuestasMap from "./PropuestasMap";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
 import "./Styles/Propuestas.css";
 
 

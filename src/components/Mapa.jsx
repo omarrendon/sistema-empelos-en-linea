@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Map, TileLayer, Popup, Marker, withLeaflet } from "react-leaflet";
 import { SearchControl, OpenStreetMapProvider } from "react-leaflet-geosearch";
 import { Icon } from "leaflet";
-import "./Styles/Mapa.css";
+import "./Empresarios/Styles/Mapa.css";
 
 const icon = new Icon({
   iconUrl: "/trabajo.svg",

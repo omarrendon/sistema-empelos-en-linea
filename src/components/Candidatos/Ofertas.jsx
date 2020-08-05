@@ -1,10 +1,12 @@
 import React from 'react'
-function MenuInicial() {
+
+function Ofertas() {
   return (
     <div>
-      
+      Ofertas
     </div>
   )
 }
 
-export default MenuInicial
+export default Ofertas;
+

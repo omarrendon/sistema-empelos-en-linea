@@ -1,35 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import useFetch from "../../Hooks/useFetch";
-import PerfilImagen from "./PerfilImagen";
+import PerfilImagen from "../PerfilImagen";
 import Logo from "../../Images/find.jpg";
 import ModalEditarPerfil from "./ModalEditarPerfil";
-import axios from "axios";
 import "./Styles/PerfilData.css";
 
 function PerfilData() {
   const { data } = useFetch("http://localhost:4000/api/empresario/", {});
   console.log(data);
-  const { id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia } = !!data && data[2];
-  const user = {id_empresario, nombre, apellido_paterno, apellido_materno, email, telefono, contrasenia};
+  const {
+    id_empresario,
+    nombre,
+    apellido_paterno,
+    apellido_materno,
+    email,
+    telefono,
+    contrasenia
+  } = !!data && data[2];
+  const user = {
+    id_empresario,
+    nombre,
+    apellido_paterno,
+    apellido_materno,
+    email,
+    telefono,
+    contrasenia
+  };
   const [modalShow, setModalShow] = useState(false);
   const [dataUser, setDataUser] = useState(user);
-  
+
   console.table(user);
-  
-  useEffect( () => {
+
+  useEffect(() => {
     setDataUser(user);
     console.log(nombre);
   }, [data]);
-  
+
   console.log(dataUser);
   const updateUser = () => {
     setModalShow(true);
-
   };
 
   return (
-    <>
+    <div className="container p-4">
       <Row>
         <Col md={12} sm={12} xs={12} className="perfil ">
           <Card className="border border-dark">
@@ -78,7 +92,7 @@ function PerfilData() {
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   );
 }
 

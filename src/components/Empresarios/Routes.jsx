@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navigation from './Navigation';
 import RegistroEmpleo from './RegistroEmpleo';
-import Perfil from './Perfil';
+import Perfil from './PerfilData';
 import Publicaciones from './Publicaciones';
 import Propuestas from './Propuestas';
 
 function Routes() {
-  return (
+  return ( 
     <Router>
       <Navigation />
       <Switch>

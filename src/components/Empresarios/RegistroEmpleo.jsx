@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "../../Hooks/useForm";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Mapa from "./Mapa";
+import Mapa from "../Mapa";
 import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";

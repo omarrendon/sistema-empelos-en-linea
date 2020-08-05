@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
-import PerfilImagen from "./PerfilImagen";
+import PerfilImagen from "../PerfilImagen";
 import Logo from "../../Images/find.jpg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";

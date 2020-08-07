@@ -15,6 +15,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.0.2",
     "react-leaflet": "^2.7.0",
     "react-leaflet-geosearch": "^0.3.0",
     "react-router-dom": "^5.2.0",

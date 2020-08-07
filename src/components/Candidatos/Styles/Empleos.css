@@ -1,0 +1,33 @@
+.detalles {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;  
+}
+
+.detalles-datos{
+  /* border: 1px solid #003049; */
+  background: #fdfffc;
+  border-radius: 10px;
+  width: 100%;
+  height: auto ;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* justify-content: flex-end; */
+
+}
+
+.detalles-label{
+  font-size: 1.4em;
+  margin-top: 10px;
+  color: #003049;
+  font-weight: 700;
+}
+.detalles-parrafo{
+  font-size: 1.4em;
+  /* margin: 20px; */
+ font-weight: 400;
+}

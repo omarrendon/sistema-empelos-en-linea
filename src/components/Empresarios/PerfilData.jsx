@@ -70,7 +70,7 @@ function PerfilData() {
                 <p className="data-perfil ml-5 pl-5">{contrasenia}</p>
               </Col>
               <Col md={6} sm={12} xs={12} className="imagen-perfil">
-                <PerfilImagen url={Logo} alt={"FotoPerfil"} width={450} />
+                <PerfilImagen url={Logo} alt={"FotoPerfil"} />
               </Col>
               <Col md={12} sm={12} xs={12} className="button-perfil m-3">
                 <Button

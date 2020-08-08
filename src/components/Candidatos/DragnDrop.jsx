@@ -11,15 +11,17 @@ function DragnDrop(props) {
     [myFiles]
   );
 
-  const {
-    getRootProps,
-    getInputProps,
-    acceptedFiles,
-    
-  } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: ".pdf, .jpeg, .png, .pdf, .doc"
+    accept: ".pdf, .jpeg, .png, .pdf, .doc",
+    minSize: 0,
+    maxSize: 1048576
   });
+  
+  const handleSubmit = file => {
+    const newFile = [...myFiles];
+    console.log(newFile);
+  };
 
   const removeFile = file => () => {
     const newFiles = [...myFiles];
@@ -33,59 +35,39 @@ function DragnDrop(props) {
 
   const files = myFiles.map(file => (
     <li key={file.path}>
-      {file.path} - {file.size} bytes{" "}
-      <button onClick={removeFile(file)}>Remove File</button>
+      <em className="m-1">
+        {file.path} 
+      </em>
+      <button className="btn btn-danger ml-3 mt-2" onClick={removeFile(file)}> Eliminar archivo</button>
     </li>
   ));
-  
-   
+
   return (
     <section className="container">
-      <div {...getRootProps({ className: "dropzone" })}>
+      <div {...getRootProps({ className: "dropzone" })} className="dnd">
         <input {...getInputProps()} />
-        <p>Arrastre su archivo aquí o hacer click</p>
+        <p>Arrastre su archivo aquí o hacer click aquí</p>
         <em>(Unicamente se poermiten archivos *.jpeg, *.png, *.pdf, *.doc )</em>
       </div>
-      <aside style={thumbsContainer}>
-        <h3>Archivos: </h3>
-        <p>{files}</p>
-
-        
+      <aside className="mt-3">
+        <h4>Archivos: </h4> <p>{files}</p>{" "}
+        {files.length > 0 && (
+          <button
+            className="btn btn-success m-2"
+            onClick={() => handleSubmit(files)}
+          >
+            Enviar
+          </button>
+        )}
       </aside>
-      {files.length > 0 && <button onClick={removeAll}>Remove All</button>}
+      {files.length > 1 && (
+        <button className="btn btn-danger ml-3" onClick={removeAll}>
+          Eliminar todos los archivos
+        </button>
+      )}
     </section>
   );
 }
 
 export default DragnDrop;
 
-const thumbsContainer = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  marginTop: 16
-};
-
-const thumb = {
-  display: "inline-flex",
-  borderRadius: 2,
-  border: "1px solid #eaeaea",
-  marginBottom: 8,
-  marginRight: 8,
-  width: 100,
-  height: 100,
-  padding: 4,
-  boxSizing: "border-box"
-};
-
-const thumbInner = {
-  display: "flex",
-  minWidth: 0,
-  overflow: "hidden"
-};
-
-const img = {
-  display: "block",
-  width: "auto",
-  height: "100%"
-};

@@ -31,3 +31,8 @@
   /* margin: 20px; */
  font-weight: 400;
 }
+.dnd{
+  border: dotted 5px ;
+  padding: 20px;
+  margin-left: -12px;
+}

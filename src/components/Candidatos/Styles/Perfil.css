@@ -1,0 +1,47 @@
+.perfil-titulo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+.perfil-data1{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.datos-perfil{
+  font-size: 1.5em;
+  padding-left: 30px;
+  font-weight: 600;
+  color: #264653;
+}
+.data-perfil{
+  font-size: 1.3em;
+  padding-left: 30px;
+  font-weight: 300;
+  color: #000000;
+}
+.perfil-data2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.perfil-boton{
+   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.button{
+  width: 200px;
+  background: #06d6a0 !important;
+  border-color: #06d6a0 !important;
+}

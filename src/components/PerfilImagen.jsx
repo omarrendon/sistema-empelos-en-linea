@@ -1,8 +1,8 @@
 import React from 'react';
 
-function PerfilImagen({url, alt, width}) {
+function PerfilImagen({url, alt}) {
   const style = {
-    width: `100%`,
+    width: `90%`, 
     borderRadius: "10px",
     objectFit: "contain",
   }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import {  Col } from "react-bootstrap";
 import EmpleosMap from "./EmpleosMap";
 import "./Styles/Empleos.css";
 import DragnDrop from "./DragnDrop";
@@ -79,7 +79,10 @@ function Empleos() {
                 </p> */}
                 <label className="detalles-label">Email de contacto</label>
                 <p className="detalles-parrafo">{info.empresario.email}</p>
-                <DragnDrop />
+                <label className="detalles-label">Insertar CV.</label>
+                <div >
+                  <DragnDrop />
+                </div>
               </Col>
             </>
           ) : (

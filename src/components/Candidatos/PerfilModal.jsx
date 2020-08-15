@@ -8,66 +8,71 @@ import "react-toastify/dist/ReactToastify.css";
 import "../Empresarios/Styles/Toast.css";
 
 function PerfilModal(props) {
-  // const [user, setUser] = useState(props.user);
-  // const { id_empresario } = user;
-  // const [showToastSuccess, setShowToastSuccesss] = useState(null);
+  const [user, setUser] = useState(props.user);
+  const { id_candidato } = user;
+  console.log(id_candidato);
+  const [showToastSuccess, setShowToastSuccesss] = useState(null);
+  console.log(props);
 
-  // useEffect(() => {
-  //   setUser(props.user);
-  //   console.log(user);
-  // }, [props]);
+  useEffect(() => {
+    setUser(props.user);
+    console.log(user);
+  }, [props]);
 
-  // const handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   setUser({ ...user, [name]: value });
-  // };
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
+  };
 
-  // const handleSubmit = async event => {
-  //   const {
-  //     nombre,
-  //     apellido_paterno,
-  //     apellido_materno,
-  //     email,
-  //     telefono,
-  //     contrasenia
-  //   } = user;
-  //   const data = {
-  //     nombre,
-  //     apellido_paterno,
-  //     apellido_materno,
-  //     email,
-  //     telefono,
-  //     contrasenia
-  //   };
-  //   event.preventDefault();
-  //   console.log("ENVIADOS");
-  //   console.log(user);
-  //   await axios.put(
-  //     `http://localhost:4000/api/empresario/${id_empresario}`,
-  //     data
-  //   );
+  const handleSubmit = async event => {
+    const {
+      nombre,
+      apellido_paterno,
+      apellido_materno,
+      email,
+      telefono,
+      contrasenia
+    } = user;
+    const data = {
+      nombre,
+      apellido_paterno,
+      apellido_materno,
+      email,
+      telefono,
+      contrasenia
+    };
+    event.preventDefault();
+    console.log("ENVIADOS");
+    console.log(user);
+    await axios.put(
+      `http://localhost:4000/api/candidato/${id_candidato}`,
+      data
+    );
 
-  //   setShowToastSuccesss(true);
-  //   toast.success("Se guardaron los cambios exitosamente ✔", {
-  //     className: "toast-success"
-  //   });
-  // };
+    setShowToastSuccesss(true);
+    toast.success("Se guardaron los cambios exitosamente ✔", {
+      className: "toast-success"
+    });
 
-  // const successToast = () => {
-  //   return (
-  //     <ToastContainer
-  //       position="bottom-center"
-  //       autoClose={5000}
-  //       hideProgressBar={false}
-  //       newestOnTop={false}
-  //       closeOnClick
-  //       rtl={false}
-  //       pauseOnFocusLoss
-  //       draggable
-  //       pauseOnHover
-  //     />
-  //   );
-  // };
+    props.updateData(data.nombre);
+  };
+  
+  
+  const successToast = () => {
+    return (
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    );
+  };
   
   return (
     <Modal
@@ -76,7 +81,7 @@ function PerfilModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      {/* {showToastSuccess && successToast()} */}
+      {showToastSuccess && successToast()}
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Editar información del usuario
@@ -84,7 +89,7 @@ function PerfilModal(props) {
       </Modal.Header>
       <Modal.Body>
         <Row>
-          {/* <Form onSubmit={handleSubmit}>
+           <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Col md={6} sm={12} xs={12} className="pl-4 ">
                 <Form.Group>
@@ -155,8 +160,7 @@ function PerfilModal(props) {
                 </Button>
               </Col>
             </Form.Row>
-          </Form> */}
-          dwfjrfjreof
+          </Form> 
         </Row>
       </Modal.Body>
     </Modal>

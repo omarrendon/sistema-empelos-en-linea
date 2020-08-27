@@ -12,10 +12,10 @@ function Routes() {
     <Router>
       <Navigation />
       <Switch>
-        <Route exact path="/" component={RegistroEmpleo} />
-        <Route path="/perfil" component={Perfil} />
-        <Route path="/publicaciones" component={Publicaciones} />
-        <Route path="/propuestas" component={Propuestas} />
+        <Route exact path="/empresario" component={RegistroEmpleo} />
+        <Route path="/empresario-perfil" component={Perfil} />
+        <Route path="/empresario-publicaciones" component={Publicaciones} />
+        <Route path="/empresario-propuestas" component={Propuestas} />
       </Switch>
     </Router>
   );

@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import useFetch from "../../Hooks/useFetch";
+import axios from "axios";
 import PerfilImagen from "../PerfilImagen";
 import Logo from "../../Images/find.jpg";
 import ModalEditarPerfil from "./ModalEditarPerfil";
 import "./Styles/PerfilData.css";
 
 function PerfilData() {
-  const { data } = useFetch("http://localhost:4000/api/empresario/", {});
-  console.log(data);
+  const [modalShow, setModalShow] = useState(false);
+  const [data, setData] = useState([]);
   const {
-    id_empresario,
+    id_candidato,
     nombre,
     apellido_paterno,
     apellido_materno,
     email,
     telefono,
     contrasenia
-  } = !!data && data[2];
+  } = data;
   const user = {
-    id_empresario,
+    id_candidato,
     nombre,
     apellido_paterno,
     apellido_materno,
@@ -27,19 +27,26 @@ function PerfilData() {
     telefono,
     contrasenia
   };
-  const [modalShow, setModalShow] = useState(false);
   const [dataUser, setDataUser] = useState(user);
 
   console.table(user);
 
   useEffect(() => {
-    setDataUser(user);
-    console.log(nombre);
-  }, [data]);
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:4000/api/empresario/");
+    setData(response.data.data[0]);
+  };
 
   console.log(dataUser);
   const updateUser = () => {
     setModalShow(true);
+  };
+
+  const handleUpdateData = e => {
+    fetchData();
   };
 
   return (
@@ -86,6 +93,7 @@ function PerfilData() {
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                   user={user}
+                  updateData={handleUpdateData}
                 />
               </Col>
             </Row>

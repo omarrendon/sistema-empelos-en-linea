@@ -28,7 +28,6 @@ function Perfil() {
     contrasenia
   };
   const [dataUser, setDataUser] = useState(user);
-  console.log(dataUser);
 
   console.table(user);
   useEffect(() => {
@@ -39,16 +38,12 @@ function Perfil() {
     const response = await axios.get("http://localhost:4000/api/candidato/");
     setData(response.data.data[0]);
   };
-  console.log(data);
-  console.log(nombre);
 
   const updateUser = () => {
     setModalShow(true);
-    console.log(modalShow);
   };
 
   const handleUpdateData = (e) => {
-    console.log(e);
     fetchData();
   }
 

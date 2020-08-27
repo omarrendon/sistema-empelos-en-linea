@@ -10,10 +10,8 @@ import "../Empresarios/Styles/Toast.css";
 function PerfilModal(props) {
   const [user, setUser] = useState(props.user);
   const { id_candidato } = user;
-  console.log(id_candidato);
   const [showToastSuccess, setShowToastSuccesss] = useState(null);
-  console.log(props);
-
+  
   useEffect(() => {
     setUser(props.user);
     console.log(user);
@@ -42,8 +40,6 @@ function PerfilModal(props) {
       contrasenia
     };
     event.preventDefault();
-    console.log("ENVIADOS");
-    console.log(user);
     await axios.put(
       `http://localhost:4000/api/candidato/${id_candidato}`,
       data
@@ -54,7 +50,7 @@ function PerfilModal(props) {
       className: "toast-success"
     });
 
-    props.updateData(data.nombre);
+    props.updateData();
   };
   
   
@@ -151,7 +147,6 @@ function PerfilModal(props) {
                 <PerfilImagen url={Logo} alt={"FotoPerfil"} width={350} />
                 <Button
                   type="submit"
-                  // onClick={props.onHide}
                   variant="success"
                   size="lg"
                   className="mt-5 ml-5"

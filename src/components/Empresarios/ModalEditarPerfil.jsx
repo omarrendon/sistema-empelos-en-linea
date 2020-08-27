@@ -49,6 +49,8 @@ function ModalEditarPerfil(props) {
     toast.success("Se guardaron los cambios exitosamente ✔", {
       className: "toast-success"
     });
+
+    props.updateData();
   };
 
   const successToast = () => {
